@@ -56,7 +56,15 @@ class LinkedList{
             }
             delete(head);
         }
-
+        
+        LinkedList<T> operator+(LinkedList<T> & param){
+            LinkedList<T> temp;
+            Node <T> * aux = this->head;
+            while(aux->getNext() != nullptr)
+                aux = aux->getNext();
+            aux->setNext(param.head);
+            return temp;
+        }
 
         bool addInFront(T val){
             Node<T> * aux = new (std::nothrow) Node<T>();
@@ -98,7 +106,7 @@ class LinkedList{
         void printList(){
             Node<T> * aux = head;
             while(aux!=nullptr){
-                printf("%f ", aux->getValue());
+                std::cout << aux->getValue() << " ";
                 aux = aux->getNext();
             }
             printf("\n");
@@ -107,7 +115,7 @@ class LinkedList{
 
 
 int main(){
-    LinkedList <double> a;
+    LinkedList <int> a, b;
     int n;
     std::string buffer;
     std::getline(std::cin, buffer);
@@ -118,10 +126,26 @@ int main(){
         a.addInFront(val);
     }
     a.printList();
-    int remove;
-    std::cout << "Remove: ";
-    std::cin>> remove;
-    a.removeElement(remove);
+    
+    std::cin.ignore();
+    std::getline(std::cin, buffer);
+    std::stringstream(buffer) >> n;
+    for(int i = 0; i < n; i++){
+        std::cin >> val;
+        b.addInFront(val);
+    }
+    b.printList();
+    
+    LinkedList<int> c; 
+    c = a+b;
+
+    c.printList();
+
+    //int remove;
+   // std::cout << "Remove: ";
+    //std::cin>> remove;
+    //a.removeElement(remove);
+
     a.printList();
 
     return 0;

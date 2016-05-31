@@ -43,10 +43,13 @@ class LinkedList{
     private:
         Node<T> * head;
     public:
+        // Default constructor
         LinkedList(){
             this->head = nullptr;
         }
         
+
+        // Destructor
         ~LinkedList(){
             Node<T> * aux = head;
             while(head!=nullptr){
@@ -57,6 +60,7 @@ class LinkedList{
             delete(head);
         }
         
+        // Overload operator plus
         LinkedList<T> operator+(LinkedList<T> & param){
             LinkedList<T> temp;
             Node <T> * aux = this->head;
@@ -65,6 +69,16 @@ class LinkedList{
             aux->setNext(param.head);
             return temp;
         }
+        
+
+        /**
+        TODO: Add the copy constructor
+        */
+        
+        
+        /**
+        TODO: Add the Copy Assignment
+        */
 
         bool addInFront(T val){
             Node<T> * aux = new (std::nothrow) Node<T>();
@@ -103,6 +117,39 @@ class LinkedList{
             }
         }
 
+        /**
+        * Recursive mToLast where the last element is:
+        * n   -- 0,
+        * n-1 -- 1, 
+        * n-2 -- 2
+        * 1   -- n-1
+        */
+        Node<T> * mToLast(Node<T> *h, const int& m, int & cur){
+            if((*h).getNext() == nullptr){
+                if(m==cur)
+                    return(h);
+                return nullptr;
+            } else{
+                Node <T> * aux; 
+                aux = mToLast((*h).getNext(), m , cur);
+                if(aux==nullptr){
+                    cur++;
+                    if(cur == m){
+                        aux = h;
+                        return aux;
+                    } else {
+                        return nullptr;
+                    }
+                } else {
+                    return aux;
+                }
+            }
+        }
+        
+        Node<T> * getHead(){
+            return this->head;
+        }
+
         void printList(){
             Node<T> * aux = head;
             while(aux!=nullptr){
@@ -127,6 +174,7 @@ int main(){
     }
     a.printList();
     
+    /**
     std::cin.ignore();
     std::getline(std::cin, buffer);
     std::stringstream(buffer) >> n;
@@ -141,12 +189,13 @@ int main(){
 
     c.printList();
 
-    //int remove;
-   // std::cout << "Remove: ";
-    //std::cin>> remove;
-    //a.removeElement(remove);
-
-    a.printList();
+    c = a;
+    c.printList();
+    */
+    int variable = 0; 
+    Node<int> * res;
+    res = a.mToLast(a.getHead(), 5, variable);
+    std::cout << "Value: " << res->getValue() << std::endl;
 
     return 0;
 }

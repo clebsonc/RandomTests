@@ -7,22 +7,14 @@
 #include <unordered_set>
 #include <cmath>
 
-Sentence::Sentence() {
-    this->sentence = nullptr;
-}
-
-
-Sentence::Sentence(std::string s):sentence(s){};
-
-
-char Sentence::findFirstNonRepeatedCharacter() {
+char Sentence::findFirstNonRepeatedCharacter(std::string sentence) {
     std::unordered_map<char, int> umap;
     int first = 0;  // index of the first non repeated word
 
-    for(int i = 0; this->sentence[i]!='\0'; i++){
+    for(int i = 0; sentence[i]!='\0'; i++){
         std::unordered_map<char, int>::const_iterator got = umap.find(sentence[i]);
         if(got != umap.end()){
-            umap.at(this->sentence[i]) = this->sentence[i] + 1;
+            umap.at(sentence[i]) = sentence[i] + 1;
             if(sentence[first] == sentence[i]){
                 do{
                     first++;
@@ -98,4 +90,31 @@ int Sentence::stringToInteger(std::string vetor){
             return value + (vetor[i]-'0') * pot;
         }
     }
+}
+
+
+std::string Sentence::integerToString(int value) {
+    std::string buffer;
+    buffer.reserve(10);
+    bool negative = value < 0;
+    if(negative) {
+        buffer.push_back('-');
+        value = -value;
+    }
+    std::cout << "buffer: " << buffer << std::endl;
+    int mod = 0;
+    do{
+        mod = value % 10;
+        value = value / 10;
+        buffer.push_back('0' + mod);
+    }while(value != 0);
+    int i = negative ? 1 : 0;
+    int j = buffer.size() - 1;
+    char c;
+    for(i, j; i<j; i++, j--){
+        c = buffer[i];
+        buffer[i] = buffer[j];
+        buffer[j] = c;
+    }
+    return buffer;
 }

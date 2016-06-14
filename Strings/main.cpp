@@ -33,8 +33,14 @@ int main() {
     std::cout << "i = " << i << std::endl;
     std::cout << "size i: " << sizeof(i);*/
 
-    int value = Sentence::stringToInteger("0");
-    std::cout << "Value: " << value << std::endl;
+    /**int value = Sentence::stringToInteger("0");
+    std::cout << "Value: " << value << std::endl; */
+
+    std::string str = Sentence::integerToString(1);
+    std::cout << "String Number: " << str;
+
+    //std::cout <<"\nMod: " << (-57)%10 << std::endl;
+
 
     return 0;
 }

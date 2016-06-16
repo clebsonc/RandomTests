@@ -36,11 +36,27 @@ int main() {
     /**int value = Sentence::stringToInteger("0");
     std::cout << "Value: " << value << std::endl; */
 
-    std::string str = Sentence::integerToString(1);
-    std::cout << "String Number: " << str;
+    //std::string str = Sentence::integerToString(1);
+    //std::cout << "String Number: " << str;
 
     //std::cout <<"\nMod: " << (-57)%10 << std::endl;
 
+    std::string a = "abcdefghijklmnopqrstuvwxyz";
+    //a.insert(1, 1, 'c');
+    //std::cout << a << std::endl;
+
+    std::stack<std::string> * stack;
+
+
+    stack = Sentence::find_all_permutation(a);
+    int i = 1;
+    while(!stack->empty()){
+        std::cout << "i: " << i << " " << stack->top() << std::endl;
+        i++;
+        stack->pop();
+    }
+
+    delete stack;
 
     return 0;
 }

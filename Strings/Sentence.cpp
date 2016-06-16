@@ -118,3 +118,44 @@ std::string Sentence::integerToString(int value) {
     }
     return buffer;
 }
+
+
+std::stack<std::string> * Sentence::find_all_permutation(std::string str){
+    std::stack<std::string> * stack1, * stack2;
+    try{
+        stack1 = new std::stack<std::string>;  // throw bad_alloc
+        stack1->push(str.substr(0,1));
+        int i = 1;
+        while(i!=str.size()){
+            stack2 = do_perm(stack1, str[i]);
+            stack1 = stack2;
+            i++;
+        }
+        return stack1;
+    } catch(std::bad_alloc ba){
+        std::cout << "Error while allocating memory:\n" << ba.what() << std::endl;
+        return nullptr;
+    }
+}
+
+
+std::stack<std::string> * Sentence::do_perm(std::stack<std::string> * stack, char c){
+    std::string str;
+    try{
+        std::stack<std::string> * stack2 = new std::stack<std::string>;
+        while(!stack->empty()){
+            str = stack->top();
+            stack->pop();
+            for(int i = 0; i<=str.size(); i++){
+                std::string str2 = str;
+                str2.insert(i, 1, c);
+                stack2->push(str2);
+            }
+        }
+        delete stack;
+        return stack2;
+    } catch(std::bad_alloc ba){
+        std::cout << "Error while allocating memory in do_perm: \n" << ba.what() << std::endl;
+        return nullptr;
+    }
+}

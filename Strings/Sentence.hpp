@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 #include <stack>
-
+#include <list>
 
 
 class Sentence {
@@ -26,6 +26,9 @@ public:
     static std::stack<std::string> * find_all_permutation(std::string string);
 
     static std::stack<std::string> * do_perm(std::stack<std::string> * stack, char c);
+
+    static std::list<std::string> find_combinations_considering_order(std::string str);
+
 };
 
 

@@ -159,3 +159,30 @@ std::stack<std::string> * Sentence::do_perm(std::stack<std::string> * stack, cha
         return nullptr;
     }
 }
+
+
+std::list<std::string> Sentence::find_combinations_considering_order(std::string str) {
+    if(str.size() == 0){
+        std::cout << "Empty string" << std::endl;
+        std::exit(1);
+    }
+
+    std::list <std::string> list;
+    list.push_back(str.substr(0, 1));
+    for(int i = 1; i<str.size(); i++){
+        std::list<std::string>::iterator it = list.begin();
+        std::list<std::string>::iterator ite = --list.end();
+
+        while(it!=ite){
+            std::string str2 = *it;
+            str2.append(str.substr(i, 1));
+            list.push_back(str2);
+            it++;
+        }
+        std::string str2 = *ite;
+        str2.append(str.substr(i, 1));
+        list.push_back(str2);
+        list.push_back(str.substr(i, 1));
+    }
+    return list;
+}

@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <string>
 #include <cmath>
+#include <list>
 
 
 int main() {
@@ -41,22 +42,29 @@ int main() {
 
     //std::cout <<"\nMod: " << (-57)%10 << std::endl;
 
-    std::string a = "abcdefghijklmnopqrstuvwxyz";
+    //std::string a = "aaa";
     //a.insert(1, 1, 'c');
     //std::cout << a << std::endl;
 
-    std::stack<std::string> * stack;
+    //std::stack<std::string> * stack;
 
 
-    stack = Sentence::find_all_permutation(a);
-    int i = 1;
+    /***stack = Sentence::find_all_permutation(a);
+    unsigned long int i = 1;
     while(!stack->empty()){
         std::cout << "i: " << i << " " << stack->top() << std::endl;
         i++;
         stack->pop();
     }
-
     delete stack;
+     */
+
+    std::list<std::string> list = Sentence::find_combinations_considering_order("wxyz");
+    int i = 1;
+    for(std::string s : list){
+        std::cout << "i: " << i << " " << s << std::endl;
+        i++;
+    }
 
     return 0;
 }

@@ -1,2 +1,2 @@
-Some Random Stuff and practcing C++
+Some Random Stuff and practicing C++
 

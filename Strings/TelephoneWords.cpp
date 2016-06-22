@@ -56,7 +56,7 @@ void TelephoneWords::print_letters(){
 
 std::vector<int> TelephoneWords::transform_to_array(int number){
     std::vector<int> array;
-    while(number > 10) {
+    while(number >= 10) {
         array.push_back(number % 10);
         number = number / 10;
     }
@@ -72,6 +72,8 @@ std::vector<int> TelephoneWords::transform_to_array(int number){
 
 void TelephoneWords::initialize_stack(std::stack<std::string> * & s1, int n){
     for(int i = 0; i < 3; i++){
+        if(n == 9 && i == 2 || n == 0 && i == 1)
+            break;
         char c = get_char_key(n, i);
         std::string a;
         a.push_back(c);
@@ -89,26 +91,18 @@ void TelephoneWords::combine(std::stack<std::string> * & s2, std::string str, in
         std::exit(1); // error while allocating memory
     }
 
-    if(i==0){
-        str.push_back(get_char_key(i, 0));  // the key 0 has only one char
-        s2->push(str);
-    } else{
-        for(int j = 0 ; j < 3 ; j++){
-            if(i == 9 && j == 2)
-                break;
-            std::string ns = str;
-            ns.push_back(get_char_key(i, j));
-            s2->push(ns);
-        }
+    for(int j = 0 ; j < 3 ; j++){
+        if(i == 9 && j == 2 || i == 0 && j == 1)
+            break;
+        std::string ns = str;
+        ns.push_back(get_char_key(i, j));
+        s2->push(ns);
     }
 }
 
 
 std::stack<std::string> * TelephoneWords::get_words(int number){
     std::vector<int> an = this->transform_to_array(number);
-    for(int i : an ){
-        std::cout << "i  = " << i << std::endl;
-    }
     try{
         std::stack<std::string> * s1 = new std::stack<std::string>,
                                 * s2 = nullptr;

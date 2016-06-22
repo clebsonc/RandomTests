@@ -3,5 +3,5 @@ project(Strings)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp Sentence.cpp Sentence.hpp)
+set(SOURCE_FILES main.cpp Sentence.cpp Sentence.hpp TelephoneWords.cpp TelephoneWords.hpp)
 add_executable(Strings ${SOURCE_FILES})

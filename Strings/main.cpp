@@ -1,7 +1,7 @@
 #include <iostream>
 
-
 #include "Sentence.hpp"
+#include "TelephoneWords.hpp"
 #include <unordered_map>
 #include <string>
 #include <cmath>
@@ -59,12 +59,24 @@ int main() {
     delete stack;
      */
 
-    std::list<std::string> list = Sentence::find_combinations_considering_order("wxyz");
+    /*std::list<std::string> list = Sentence::find_combinations_considering_order("wxyz");
     int i = 1;
     for(std::string s : list){
         std::cout << "i: " << i << " " << s << std::endl;
         i++;
-    }
+    }*/
 
+    TelephoneWords a;
+    a.print_letters();
+    
+    std::cout << "\n";
+
+    std::stack<std::string> * stack = a.get_words(7);
+
+    while(!stack->empty()){
+        std::cout << stack->top() << std::endl;
+        stack->pop();
+    }
+    delete stack;
     return 0;
 }

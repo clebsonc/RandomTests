@@ -71,7 +71,7 @@ int main() {
     
     std::cout << "\n";
 
-    std::stack<std::string> * stack = a.get_words(7);
+    std::stack<std::string> * stack = a.get_words(90);
 
     while(!stack->empty()){
         std::cout << stack->top() << std::endl;

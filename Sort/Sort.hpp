@@ -12,6 +12,10 @@ class Sort{
         static void insertionSort(int *v, int n);
 
         static void quickSort(int * v, int i, int j);
+
+        static void mergeSort(int *v, int i, int j);
+
+        static void merge(int *v, int i, int m, int j);
 };
 
 #endif

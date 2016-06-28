@@ -63,3 +63,55 @@ void Sort::quickSort(int *v, int i, int j) {
 
 }
 
+
+void Sort::mergeSort(int *v, int i, int j) {
+    int m = (i+j)/2;
+    if(i < j){
+        mergeSort(v, i, m);
+        mergeSort(v, m+1, j);
+        merge(v, i, m, j);
+    }
+}
+
+void Sort::merge(int * v, int i, int m, int j){
+    int k, a, b;
+    int n1 = m-i+1;
+    int n2 = j - m;
+
+    int v1[n1];
+    int v2[n2];
+
+    k = i;
+    for(a=0; a < n1; a++){
+        v1[a] = v[k];
+        k++;
+    }
+
+    k = m+1;
+    for(a = 0; a< n2; a++){
+        v2[a] = v[k];
+        k++;
+    }
+
+    k=i; a=0; b=0;
+    while(a<n1 && b<n2){
+        if(v1[a] < v2[b]){
+            v[k] = v1[a];
+            a++;
+            k++;
+        } else{
+            v[k] = v2[b];
+            b++;
+            k++;
+        }
+    }
+
+    while(a < n1){
+        v[k] = v1[a];
+        a++; k++;
+    }
+    while(b<n2){
+        v[k] = v2[b];
+        b++; k++;
+    }
+}

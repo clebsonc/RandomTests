@@ -8,7 +8,8 @@ int main(){
     //Sort::selectionSort(v, 6);
     //Sort::insertionSort(v, 8);
     //Sort::quickSort(v, 0, 4);
-    Sort::mergeSort(v, 0, 8);
+    //Sort::mergeSort(v, 0, 8);
+    Sort::stableSelectionSort(v, 9);
 
     for(int i = 0; i < 9; i++){
         std::cout << v[i] << " ";

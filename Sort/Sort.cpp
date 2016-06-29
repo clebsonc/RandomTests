@@ -24,6 +24,23 @@ void Sort::swap(int v[], int i, int j){
     v[j] = temp;
 }
 
+void Sort::stableSelectionSort(int *v, int n) {
+    if(n!=0){
+        for(int i = 0; i<n; i++){
+            int miv = find_min(v, n, i);
+            insert_remove(v, i, miv);
+        }
+    }
+}
+
+void Sort::insert_remove(int *v, int i, int minv) {
+    int temp = v[minv];
+    for(int j = minv; j > i; j--){
+        v[j] = v[j-1];
+    }
+    v[i] = temp;
+}
+
 
 void Sort::insertionSort(int *v, int n) {
     for(int i = 0; i < n; i++) {

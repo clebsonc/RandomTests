@@ -1,6 +1,7 @@
 #ifndef SORT_SORT_HPP
 #define SORT_SORT_HPP
 
+
 class Sort{
     private:
         static void insert_remove(int v[], int i, int minv);

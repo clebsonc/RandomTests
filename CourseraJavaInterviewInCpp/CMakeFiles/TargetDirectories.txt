@@ -1,0 +1,3 @@
+/home/clebson/ClionProjects/RandomTests/CourseraJavaInterviewInCpp/CMakeFiles/rebuild_cache.dir
+/home/clebson/ClionProjects/RandomTests/CourseraJavaInterviewInCpp/CMakeFiles/edit_cache.dir
+/home/clebson/ClionProjects/RandomTests/CourseraJavaInterviewInCpp/CMakeFiles/CourseraJavaInterviewInCpp.dir
